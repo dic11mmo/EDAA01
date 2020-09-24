@@ -1,0 +1,142 @@
+
+ 
+public class Sudoku {
+	
+	  private int[][] Sudoku= new int[9][9];
+  
+	  /**
+	   * G�r genom matrisen sudoku och s�tter in v�rdet 0 till alla platser
+	   */
+	public Sudoku(){
+
+		
+  for(int i = 0; i < 9; i++){
+	  for(int j = 0; j < 9 ; j++){
+		Sudoku[i][j] = 0;
+	  }
+	  }
+  }
+	/**
+	 * // s�ter in v�rdet X,Y platsen i matrisen//
+	 * @param Xkordinate
+	 * @param Y kordinate
+	 * @param index �r v�rdet som s�ttas in i platsen row och kol 
+	 */
+	
+	public void set(int row , int kol , int index){
+		Sudoku[row][kol] = index;
+	}
+	/**
+	// H�mtar v�rdet f�r en ruta X, Y//
+	 * 
+	 * @param X Kordinat
+	 * @param Y kordinate
+	 * @return retunerar matrisen sudoku
+	 */
+	
+	public int get(int row, int kol){
+		return Sudoku[row][kol];
+		             
+	}
+	/**
+	 * Skapar ett nytt sudoku
+	 */
+	public void Clear(){
+		Sudoku= new int[9][9];
+	}
+	 
+	
+	 
+    /**
+     * kontrollerar rader(X) och kolonnen(Y) i matrisen sudoku  f�r att se om en given nummer �r OK.
+	 
+     * @param X kordinate
+     * @paramY kordinate
+     * @param index v�rdet som s�ttas in i platsen X,Y
+     * @return om samma v�rdet finns redan i radan och kolonnen d� retunerar false
+     */
+	
+	public boolean tryInt(int row, int kol, int index){
+		
+		for(int i = 0; i < 9; i++){
+			if(Sudoku[row][i] == index && i != kol){
+				System.out.println( " Fales line 63 ");
+				return false;
+			}
+		if(Sudoku[i][kol] == index && i != row ){
+			System.out.println( " Fales line 67 ");
+			return false;
+		}
+		
+	}   
+		
+		int a = (row /3) * 3;
+		int b = (kol/3) * 3;
+		for( int i = 0 ; i < 3; i++){
+			for( int j =0; j <3; j++){
+				if(Sudoku[a +i][b+j] == index && (a+i != row && b+j != kol)){
+					return false;
+				}
+			}
+		}
+		
+		return true;
+}    
+	/**
+	 * B�rja l�sning fr�n (row och kol) = (0 , 0)
+	 * @return
+	 */
+	public boolean solve(){
+	return solve(0,0);
+	
+	}
+	
+	private boolean solve(int row, int kol){
+	 
+		if( kol > 8){
+		kol = 0;
+		row++;
+		}
+	
+		if( row > 8){
+		
+		return true;	
+	
+		}
+		if(Sudoku[row][kol]!= 0){
+			if(tryInt(row,kol,Sudoku[row][kol])){
+				return solve(row, kol+1);
+			}
+			
+		}else{
+			for(int i = 1; i <10; i ++){
+				if(tryInt(row,kol,i)){
+					Sudoku[row][kol]=i;
+					if(solve(row,kol+1)){
+					return true;	
+					}
+				}
+				
+			}
+			
+			Sudoku[row][kol]=0;
+		}
+		
+		
+		return false;
+		
+	}
+	/**
+	 * skriver ut Sudoku matriserna
+	 */
+	public void print(){
+		for(int i = 0 ; i <9 ; i ++){
+			for( int j = 0 ; j<9 ; j++){
+				
+				
+			}
+			
+		}
+	}
+	
+	}
