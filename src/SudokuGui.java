@@ -68,8 +68,10 @@ import javax.swing.*;
     							if(model.tryInt(i,j,nbr)){
         							model.set(i, j, nbr);
     							}else{
-    								System.out.println("Fel 2");
+    		
+    								JOptionPane.showMessageDialog(null, "Tyvärr fanns ingen lösning:( \n Vänligen väja två olika tal");
     							
+    						  return false;
     							}
     						}
     					}
@@ -77,6 +79,6 @@ import javax.swing.*;
     			}
      		}
     		return true;
-         }
+         } 
 }
 

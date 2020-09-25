@@ -2,6 +2,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 public class SolveButton extends JButton implements ActionListener{
 	private Sudoku model;
@@ -14,15 +15,17 @@ public class SolveButton extends JButton implements ActionListener{
 		addActionListener(this);
 	}
 	/**
-	 * Om Sudokumatrisen inte ska uppdateras och Sudoku model ska inte gå att lösas Skriver ut fel
+	 * Om Sudokumatrisen inte ska uppdateras och Sudoku model ska inte gï¿½ att lï¿½sas Skriver ut fel
 	 */
 	public void actionPerformed(ActionEvent e) {
 		if (sudo.gridUpdate()) {
 			if (model.solve()) {
 				sudo.textUpdate();
-			} else {
-				System.out.println("Det finns Fel");
-			}
-		}
+			} 
+			//else {
+				//System.out.println("Det finns Fel");
+			JOptionPane.showMessageDialog(null, "LÃ¶sning hittad!");
+		} 
+			
 	}
 }

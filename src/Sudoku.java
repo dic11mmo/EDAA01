@@ -59,15 +59,16 @@ public class Sudoku {
      */
 	
 	public boolean tryInt(int row, int kol, int index){
-		
+ 
 		for(int i = 0; i < 9; i++){
 			if(Sudoku[row][i] == index && i != kol){
-				System.out.println( " Fales line 63 ");
+				//System.out.println( " Sudoku class line 62 index is  " + index +  " Sudoku[row][i] " + Sudoku[row][i]  );
+				//System.out.println( );
 				return false;
 				
 			}
 		if(Sudoku[i][kol] == index && i != row ){
-			System.out.println( " Fales line 67 ");
+			//System.out.println( " Fales line 67 ");
 			return false;
 		}
 		
@@ -84,7 +85,12 @@ public class Sudoku {
 		}
 		
 		return true;
-}    
+} 
+	
+	
+	
+	
+	
 	/**
 	 * B�rja l�sning fr�n (row och kol) = (0 , 0)
 	 * @return
@@ -130,6 +136,8 @@ public class Sudoku {
 		return false;
 		
 	}
+	
+
 	/**
 	 * skriver ut Sudoku matriserna
 	 *
